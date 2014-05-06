@@ -1,0 +1,4 @@
+MagicMinerGui
+=============
+
+MagicMinerGui-Source-Qt
