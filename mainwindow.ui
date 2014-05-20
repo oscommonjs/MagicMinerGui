@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>484</height>
+    <width>426</width>
+    <height>580</height>
    </rect>
   </property>
   <property name="font">
@@ -21,11 +21,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="primaryPoolInfoLabel">
+   <widget class="QLabel" name="firstPoolInfoLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
+      <y>90</y>
       <width>241</width>
       <height>20</height>
      </rect>
@@ -36,7 +36,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Primary Pool Information:</string>
+     <string>1st Pool Information:</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -45,11 +45,11 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="primaryPoolUrlLabel">
+   <widget class="QLabel" name="firstPoolUrlLabel">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>80</y>
+      <y>110</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -67,11 +67,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="primaryPoolPortLabel">
+   <widget class="QLabel" name="firstPoolPortLabel">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>100</y>
+      <y>130</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -88,11 +88,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="primaryPoolWorkerNameLabel">
+   <widget class="QLabel" name="firstPoolWorkerNameLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>150</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -109,11 +109,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="primaryPoolWorkerPasswordLabel">
+   <widget class="QLabel" name="firstPoolWorkerPasswordLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>140</y>
+      <y>170</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -130,11 +130,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="primaryPoolUrl">
+   <widget class="QLineEdit" name="firstPoolUrl">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>80</y>
+      <y>110</y>
       <width>181</width>
       <height>16</height>
      </rect>
@@ -146,29 +146,15 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="text">
+     <string>stratum+tcp://stratum.ozco.in</string>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="primaryPoolPort">
+   <widget class="QLineEdit" name="firstPoolPort">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>100</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="primaryPoolWorkerName">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>120</y>
+      <y>130</y>
       <width>181</width>
       <height>16</height>
      </rect>
@@ -180,12 +166,35 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="text">
+     <string>80</string>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="primaryPoolWorkerPassword">
+   <widget class="QLineEdit" name="firstPoolWorkerName">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>140</y>
+      <y>150</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>canaan.default</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="firstPoolWorkerPassword">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>170</y>
       <width>181</width>
       <height>16</height>
      </rect>
@@ -201,34 +210,14 @@
      <string/>
     </property>
     <property name="text">
-     <string/>
+     <string>1234</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="enableBackupPoolCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>180</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Enable Backup Pool.</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="backupPoolUrlLabel">
+   <widget class="QLabel" name="secondPoolUrlLabel">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>200</y>
+      <y>220</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -245,11 +234,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="backupPoolPortLabel">
+   <widget class="QLabel" name="secondPoolPortLabel">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>220</y>
+      <y>240</y>
       <width>61</width>
       <height>16</height>
      </rect>
@@ -266,11 +255,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="backupPoolWorkerNameLabel">
+   <widget class="QLabel" name="secondPoolWorkerNameLabel">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>240</y>
+      <y>260</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -287,11 +276,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="backupPoolWorkerPasswordLabel">
+   <widget class="QLabel" name="secondPoolWorkerPasswordLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>260</y>
+      <y>280</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -308,11 +297,11 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="backupPoolUrl">
+   <widget class="QLineEdit" name="secondPoolUrl">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>200</y>
+      <y>220</y>
       <width>181</width>
       <height>16</height>
      </rect>
@@ -324,12 +313,15 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="text">
+     <string>stratum+tcp://au.ozco.in</string>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="backupPoolPort">
+   <widget class="QLineEdit" name="secondPoolPort">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>220</y>
+      <y>240</y>
       <width>51</width>
       <height>16</height>
      </rect>
@@ -341,25 +333,11 @@
       <bold>false</bold>
      </font>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="backupPoolWorkerName">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>240</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
+    <property name="text">
+     <string>80</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="backupPoolWorkerPassword">
+   <widget class="QLineEdit" name="secondPoolWorkerName">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -375,119 +353,54 @@
       <bold>false</bold>
      </font>
     </property>
+    <property name="text">
+     <string>canaan.default</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="secondPoolWorkerPassword">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>280</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="inputMask">
      <string/>
     </property>
+    <property name="text">
+     <string>1234</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="backupPoolInfoLabel">
+   <widget class="QLabel" name="secondPoolInfoLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
+      <y>200</y>
       <width>231</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Backup Pool Information:</string>
+     <string>2nd Pool Information:</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="enableGPUMining">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>330</y>
-      <width>81</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>GPU Mining</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="enableProxy">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>430</y>
-      <width>61</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Proxy</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="enableBlockErupters">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>310</y>
-      <width>101</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Block Erupters</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="enableOverride">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>330</y>
-      <width>251</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Enable All Hardware (Override &quot;-S all&quot;)</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Options:</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="startMiner">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>400</y>
+      <x>120</x>
+      <y>490</y>
       <width>151</width>
       <height>51</height>
      </rect>
@@ -498,12 +411,12 @@
    </widget>
    <widget class="QLineEdit" name="bfgMinerLocation">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>30</y>
+      <y>450</y>
       <width>181</width>
       <height>21</height>
      </rect>
@@ -518,12 +431,12 @@
    </widget>
    <widget class="QPushButton" name="bfgMinerExplorer">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>30</y>
+      <y>450</y>
       <width>81</width>
       <height>21</height>
      </rect>
@@ -539,12 +452,12 @@
    </widget>
    <widget class="QLabel" name="bfgMinerLocationLabel">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>430</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -553,13 +466,139 @@
      <string>Locate BFGMiner:</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="enableScryptMining">
+   <widget class="QLabel" name="thirdPoolUrlLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>340</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pool Url:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="thirdPoolUrl">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>310</y>
+      <y>340</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>stratum+tcp://eustratum.ozco.in</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thirdPoolPortLabel">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>360</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pool Port:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="thirdPoolWorkerName">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>380</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>canaan.default</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="thirdPoolWorkerPassword">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>400</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string>1234</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thirdPoolWorkerNameLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>380</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Worker Name:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thirdPoolWorkerPasswordLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
       <width>101</width>
-      <height>17</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
@@ -568,195 +607,131 @@
      </font>
     </property>
     <property name="text">
-     <string>Scrypt Mining</string>
+     <string>Worker Password:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QLabel" name="thirdPoolInfoLabel">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>10</x>
       <y>310</y>
-      <width>151</width>
-      <height>17</height>
+      <width>231</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
     <property name="text">
-     <string>1BTC Donation-Option</string>
+     <string>3rd Pool Information:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QLineEdit" name="thirdPoolPort">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>80</y>
-      <width>81</width>
-      <height>21</height>
+      <x>130</x>
+      <y>360</y>
+      <width>51</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="text">
-     <string>Slush Pool</string>
+     <string>80</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QLabel" name="bfgMinerLocationLabel_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>100</y>
-      <width>81</width>
-      <height>21</height>
+      <x>10</x>
+      <y>20</y>
+      <width>111</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
     <property name="text">
-     <string>50btc.com</string>
+     <string>Miner Status</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QLCDNumber" name="mhs_20">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>120</y>
-      <width>81</width>
-      <height>21</height>
+      <x>30</x>
+      <y>50</y>
+      <width>64</width>
+      <height>23</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Eligius.st(US)</string>
-    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QLCDNumber" name="mhs_av">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>140</y>
-      <width>81</width>
-      <height>21</height>
+      <x>150</x>
+      <y>50</y>
+      <width>64</width>
+      <height>23</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Eligius.st(EU)</string>
-    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QLCDNumber" name="hashrate_nonce">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>200</y>
-      <width>81</width>
-      <height>21</height>
+      <x>270</x>
+      <y>50</y>
+      <width>64</width>
+      <height>23</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Slush Pool</string>
-    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>220</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>50btc.com</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>240</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Eligius.st(US)</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>260</y>
-      <width>81</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Eligius.st(EU)</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="agreeGPLV3">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>350</y>
-      <width>211</width>
-      <height>41</height>
+      <y>50</y>
+      <width>41</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
+    <property name="text">
+     <string>Gh/s</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>50</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
     </property>
     <property name="text">
-     <string>I Agree to the GPLv3 in the 
-&quot;README--MAGICMINER.TXT&quot;</string>
+     <string>Gh/s</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>50</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gh/s</string>
     </property>
    </widget>
   </widget>
@@ -765,8 +740,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>409</width>
-     <height>21</height>
+     <width>426</width>
+     <height>27</height>
     </rect>
    </property>
   </widget>

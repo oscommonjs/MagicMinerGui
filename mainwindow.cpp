@@ -228,9 +228,6 @@ The GNU General Public License does not permit incorporating your program into p
 #include "ui_mainwindow.h"
 #include "QString"
 #include <QtCore/QCoreApplication>
-#include "stdio.h"
-
-
 
 using namespace std;
 void BFGMININGTHREAD(const QString bfg, QStringList args);
@@ -239,15 +236,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    //intialise checkboxes
-    ui->enableBackupPoolCheckBox->setChecked(false);   //Disabled by default per request of our 1 donator!
-    ui->enableGPUMining->setChecked(true);         
-    ui->enableBlockErupters->setChecked(false);
-    ui->enableOverride->setChecked(false);
-    ui->enableProxy->setChecked(false);
-    ui->enableScryptMining->setChecked(false);
-    ui->agreeGPLV3->setChecked(false);
 }
 
 //DESTUCTOMATIC!
@@ -258,26 +246,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startMiner_clicked()
 {
-    //Default Boolean Variables
-    bool agreeGPL = ui->agreeGPLV3->isChecked();
-    bool enableBackupPool = ui->enableBackupPoolCheckBox->isChecked();
-    bool enabledGPUMining = ui->enableGPUMining->isChecked();
-    bool enabledBlockErupters = ui->enableBlockErupters->isChecked();    
-    bool enabledOverride = ui->enableOverride->isChecked();
-    bool enabledProxy = ui->enableProxy->isChecked();
-    bool enabledScryptMining = ui->enableScryptMining->isChecked();
+    //set first pool information to variable
+    string firstPoolUrl = ui->firstPoolUrl->text().toStdString();
+    string firstPoolPort = ui->firstPoolPort->text().toStdString();
+    string firstPoolWorkerName = ui->firstPoolWorkerName->text().toStdString();
+    string firstPoolWorkerPassword = ui->firstPoolWorkerPassword->text().toStdString();
 
-    //set primary pool information to variable
-    string primaryPoolUrl = ui->primaryPoolUrl->text().toStdString();
-    string primaryPoolPort = ui->primaryPoolPort->text().toStdString();
-    string primaryPoolWorkerName = ui->primaryPoolWorkerName->text().toStdString();
-    string primaryPoolWorkerPassword = ui->primaryPoolWorkerPassword->text().toStdString();
+    //set second pool information to variable
+    string secondPoolUrl = ui->secondPoolUrl->text().toStdString();
+    string secondPoolPort = ui->secondPoolPort->text().toStdString();
+    string secondPoolWorkerName = ui->secondPoolWorkerName->text().toStdString();
+    string secondPoolWorkerPassword = ui->secondPoolWorkerPassword->text().toStdString();
 
-    //set backup pool information to variable
-    string backupPoolUrl = ui->backupPoolUrl->text().toStdString();
-    string backupPoolPort = ui->backupPoolPort->text().toStdString();
-    string backupPoolWorkerName = ui->backupPoolWorkerName->text().toStdString();
-    string backupPoolWorkerPassword = ui->backupPoolWorkerPassword->text().toStdString();
+    //set third pool information to variable
+    string thirdPoolUrl = ui->thirdPoolUrl->text().toStdString();
+    string thirdPoolPort = ui->thirdPoolPort->text().toStdString();
+    string thirdPoolWorkerName = ui->thirdPoolWorkerName->text().toStdString();
+    string thirdPoolWorkerPassword = ui->thirdPoolWorkerPassword->text().toStdString();
+
     string BFGMINERSTARTUPSTRING;
 
     //set BFGMiner Location String from line edit box  THIS IS ALSO WHAT LINE TO EDIT FOR ALTERNATE OS's
@@ -285,190 +271,34 @@ void MainWindow::on_startMiner_clicked()
     //This is a very simple launcher for getting your bfgminer loaded and running faster.
     //****MAKE SURE TO ADD THE EXTRA SPACE AT THE END OF YOUR BFGMINER LAUNCH COMMAND OTHERWISE IT WILL NOT LOAD CORRECTLY!*****
 #ifdef Q_OS_WIN32
-    const string bfgMinerLocation = "start bfgminer.exe ";
+    string bfgMinerLocation = "start bfgminer.exe ";
 #elif defined Q_OS_LINUX
-    const string bfgMinerLocation = "gnome-terminal -x bash -c \"/home/mikeqin/0xf8/avalon/mybfgminer/bfgminer ";
+    string bfgMinerLocation = "gnome-terminal -x bash -c \"" + QApplication::applicationDirPath().toStdString() + "/mybfgminer/bfgminer ";
 #endif
 
-    if(agreeGPL)//Agree to the GPLv3
-    {//build the bfgminer command string
+    //String with second pool information
+    BFGMINERSTARTUPSTRING += "-S cpu:auto --cpu-threads 1 -o " + firstPoolUrl + ":" + firstPoolPort + " -u " + firstPoolWorkerName + " -p " + firstPoolWorkerPassword +
+                                    " -o " + secondPoolUrl + ":" + secondPoolPort + " -u " + secondPoolWorkerName + " -p " + secondPoolWorkerPassword +
+                                    " -o " + thirdPoolUrl + ":" + thirdPoolPort + " -u " + thirdPoolWorkerName + " -p " + thirdPoolWorkerPassword +
+                                    " --api-listen";
 
-        //String without backup pool information
-        if(!enableBackupPool)
-        {
-            if(!enabledOverride)
-            {                
-                if (!enabledScryptMining)
-                {                    
-                    BFGMINERSTARTUPSTRING += "-o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword;
-                }
-
-                if (enabledScryptMining)
-                {
-                    BFGMINERSTARTUPSTRING += "--scrypt -o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword;
-                }
-
-                if(enabledProxy)
-                {
-                    //added later
-                }
-
-                if (enabledBlockErupters)
-                {
-                    BFGMINERSTARTUPSTRING += " -S erupter:all";
-                }
-
-                if (!enabledGPUMining)
-                {
-                    BFGMINERSTARTUPSTRING += " -S opencl:noauto";
-                }
-            }
-
-
-            if(enabledOverride)
-            {                
-                BFGMINERSTARTUPSTRING += "-S all -o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword;
-            }
-        }
-
-        //String with backup pool information
-        if(enableBackupPool)
-        {
-            if(!enabledOverride)
-            {
-                if (!enabledScryptMining)
-                {                    
-                    BFGMINERSTARTUPSTRING += "-o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword + " -o " + backupPoolUrl + ":" + backupPoolPort + " -u " + backupPoolWorkerName + " -p " + backupPoolWorkerPassword;
-                }
-
-                if (enabledScryptMining)
-                {                    
-                    BFGMINERSTARTUPSTRING += "--scrypt -o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword + " -o " + backupPoolUrl + ":" + backupPoolPort + " -u " + backupPoolWorkerName + " -p " + backupPoolWorkerPassword;
-                }
-
-                if (enabledBlockErupters)
-                {
-                    BFGMINERSTARTUPSTRING += " -S erupter:all";
-                }
-
-                if (!enabledGPUMining)
-                {
-                    BFGMINERSTARTUPSTRING += " -S opencl:noauto";
-                }
-
-                if(enabledProxy)
-                {
-                    //added later
-                }
-            }
-
-            if(enabledOverride)
-            {                
-                BFGMINERSTARTUPSTRING += "-S all -o " + primaryPoolUrl + ":" + primaryPoolPort + " -u " + primaryPoolWorkerName + " -p " + primaryPoolWorkerPassword + " -o " + backupPoolUrl + ":" + backupPoolPort + " -u " + backupPoolWorkerName + " -p " + backupPoolWorkerPassword;
-           }
-        }
-
-        //Combine the 2 strings to make the launch command
+    //Combine the strings to make the launch command
 #ifdef Q_OS_WIN32
-        string startupString = bfgMinerLocation + BFGMINERSTARTUPSTRING;
+    string startupString = bfgMinerLocation + BFGMINERSTARTUPSTRING;
 #elif defined  Q_OS_LINUX
-        string startupString = bfgMinerLocation + BFGMINERSTARTUPSTRING + "\"";
+    string startupString = bfgMinerLocation + BFGMINERSTARTUPSTRING + "\"";
 #endif
 
-        //LAUNCH THE DAMN MINER ALREADY! lol.
-        system(startupString.c_str());
-    }
+    //LAUNCH THE DAMN MINER ALREADY! lol.
+    system(startupString.c_str());
 
-    //The "Your not suppose to be here clause."
-    else
-    {
-        //Maybe some error correcting in next version update.  For now it just simply won't load if you don't agree.
-    }
-
-
+    //TODO:Start a thread to get miner status through rpc
+    //We can use bfgminer-rpc or write rpc function through qt
+    //We need display MHS 20s, MHS av,
+    //eg. get MHS av ,use: bfgminer-rpc -o summary | grep -P "MHS\ av=\d{1}.\d{3}" -o | cut -c 8-
 }
 
 void MainWindow::on_bfgMinerExplorer_clicked()
 {
     //BETA 4 or 5 Function.
-}
-
-//Default Slush Pool Settings
-void MainWindow::on_pushButton_clicked()
-{
-    ui->primaryPoolWorkerNameLabel->setText("Worker Name:");
-    ui->primaryPoolWorkerPasswordLabel->setText("Worker Password:");
-    ui->primaryPoolUrl->setText("http://stratum.bitcoin.cz");
-    ui->primaryPoolPort->setText("3333");
-    ui->primaryPoolWorkerPassword->setText("");
-}
-
-//Default 50btc Settings
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->primaryPoolWorkerNameLabel->setText("Worker Name:");
-    ui->primaryPoolWorkerPasswordLabel->setText("Worker Password:");
-    ui->primaryPoolUrl->setText("http://stratum.50btc.com");
-    ui->primaryPoolPort->setText("3333");
-    ui->primaryPoolWorkerPassword->setText("");
-}
-
-//Default Eligius US Stratum Server
-void MainWindow::on_pushButton_3_clicked()
-{
-    ui->primaryPoolWorkerNameLabel->setText("Wallet ID:");
-    ui->primaryPoolUrl->setText("http://stratum.mining.eligius.st");
-    ui->primaryPoolPort->setText("3334");
-    ui->primaryPoolWorkerPasswordLabel->setText("NOT NEEDED:");
-    ui->primaryPoolWorkerPassword->setText("12345");
-}
-
-//Default Eligius EU Stratum Server
-void MainWindow::on_pushButton_4_clicked()
-{
-    ui->primaryPoolWorkerNameLabel->setText("Wallet ID:");
-    ui->primaryPoolUrl->setText("http://gbt.mining.eligius.st");
-    ui->primaryPoolPort->setText("9337");
-    ui->primaryPoolWorkerPasswordLabel->setText("NOT NEEDED:");
-    ui->primaryPoolWorkerPassword->setText("12345");
-}
-
-//Default Slush Pool Settings
-void MainWindow::on_pushButton_5_clicked()
-{
-    ui->backupPoolWorkerNameLabel->setText("Worker Name:");
-    ui->backupPoolWorkerPasswordLabel->setText("Worker Password:");
-    ui->backupPoolUrl->setText("http://stratum.bitcoin.cz");
-    ui->backupPoolPort->setText("3333");
-    ui->backupPoolWorkerPassword->setText("");
-}
-
-//Default 50btc Settings
-void MainWindow::on_pushButton_6_clicked()
-{
-    ui->backupPoolWorkerNameLabel->setText("Worker Name:");
-    ui->backupPoolWorkerPasswordLabel->setText("Worker Password:");
-    ui->backupPoolUrl->setText("http://stratum.50btc.com");
-    ui->backupPoolPort->setText("3333");
-    ui->backupPoolWorkerPassword->setText("");
-}
-
-//Default Eligius US Stratum Server
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->backupPoolWorkerNameLabel->setText("Wallet ID:");
-    ui->backupPoolUrl->setText("http://stratum.mining.eligius.st");
-    ui->backupPoolPort->setText("3334");
-    ui->backupPoolWorkerPasswordLabel->setText("NOT NEEDED:");
-    ui->backupPoolWorkerPassword->setText("12345");
-}
-
-//Default Eligius EU Stratum Server
-void MainWindow::on_pushButton_8_clicked()
-{
-    ui->backupPoolWorkerNameLabel->setText("Wallet ID:");
-    ui->backupPoolUrl->setText("http://gbt.mining.eligius.st");
-    ui->backupPoolPort->setText("9337");
-    ui->backupPoolWorkerPasswordLabel->setText("NOT NEEDED:");
-    ui->backupPoolWorkerPassword->setText("12345");
 }
